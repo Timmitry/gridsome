@@ -31,13 +31,11 @@ function resolveValues (obj, currentObj = {}, options = {}, path = []) {
 
     if (key.startsWith('$')) continue
     if (key.startsWith('__')) continue
-    if (isNil(value)) continue
 
     const currentValue = currentObj[key] ? currentObj[key].value : undefined
     const resolvedValue = resolveValue(value, currentValue, options, path.concat(key))
 
     if (
-      isNil(resolvedValue) ||
       (Array.isArray(resolvedValue) && !resolvedValue.length) ||
       (isPlainObject(resolvedValue) && isEmpty(resolvedValue))
     ) {
