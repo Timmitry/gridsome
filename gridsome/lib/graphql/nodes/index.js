@@ -139,7 +139,7 @@ function addInferredFields (typeComposer, fieldDefs, fieldTypes) {
     const fieldType = fieldTypes[options.fieldName]
 
     if (!typeComposer.hasField(options.fieldName)) {
-      typeComposer.setField(options.fieldName, fieldType)
+      typeComposer.setField(options.fieldName, fieldType || 'String')
       typeComposer.setFieldExtensions(options.fieldName, options.extensions)
 
       if (isPlainObject(options.value) && !isRefFieldDefinition(options.value)) {
